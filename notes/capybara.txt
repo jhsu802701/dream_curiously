@@ -1,0 +1,3 @@
+Cheat sheet:
+http://ricostacruz.com/cheatsheets/capybara.html
+https://gist.github.com/zhengjia/428105

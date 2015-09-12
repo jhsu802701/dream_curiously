@@ -1,0 +1,14 @@
+<% provide(:title, 'All Admins') %>
+
+<h1>All Admins</h1>
+
+
+<table class="admins">
+  <tr>
+    <td><b>Last Name</b></td>
+    <td><b>First Name</b></td>
+    <td><b>Email</b></td>
+  </tr>
+  <%= render @admins %>
+</table>
+<%= will_paginate %>

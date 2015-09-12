@@ -1,0 +1,7 @@
+LAYOUTS
+
+app/views/layouts
+  application.html.erb
+  _footer.html.erb
+  _header.html.erb
+  _shim.html.erb

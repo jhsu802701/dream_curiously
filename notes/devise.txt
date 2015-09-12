@@ -1,0 +1,20 @@
+Setting up devise:
+http://www.gotealeaf.com/blog/how-to-use-devise-in-rails-for-authentication
+
+Adding custom fields to devise:
+http://www.peoplecancode.com/tutorials/adding-custom-fields-to-devise
+
+Example app:
+https://github.com/RailsApps/rails-devise
+
+Devise cheat sheet:
+http://ricostacruz.com/cheatsheets/devise.html
+
+Examples of tests for apps containing Devise:
+http://blog.rumbble.org/blog/2015/02/23/testing-out-of-the-box/
+http://stackoverflow.com/questions/20285694/failed-to-confirm-email-via-integration-tests-rspec-email-spec-capybara-devise
+http://stackoverflow.com/questions/8886748/testing-account-confirmation-with-rails-rspec-capybara-devise
+http://stackoverflow.com/questions/29426649/how-to-test-logged-logged-out-responses-of-devise-confirmable
+http://eureka.ykyuen.info/2011/03/07/rails-devise-user-sign-in-for-rspec/
+http://blog.pixarea.com/2013/01/making-rspec-feature-specs-easy-with-devise/
+http://www.vanderpol.net/rspec-integration-tests-devise-user-registration/

@@ -1,0 +1,71 @@
+AllCops:
+  Include:
+    - Rakefile
+  Exclude:
+    - setup-pg.rb
+    - bin/spring
+    - config/initializers/devise.rb
+    - db/migrate/20150508050801_devise_create_users.rb
+    - db/migrate/20150611164003_devise_create_admins.rb
+    - db/schema.rb
+    - test/test_helper.rb
+
+Style/AlignHash:
+  Exclude:
+    - admin_create.rb
+    - app/controllers/application_controller.rb
+    - app/helpers/users_helper.rb
+    - config/routes.rb
+    - db/seeds.rb
+    - test/models/admin_test.rb
+    - test/models/user_test.rb
+    - test/integration/*
+    
+ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/admins/*
+    - app/controllers/users/*
+
+PercentLiteralDelimiters:
+  Exclude:
+    - test/models/user_test.rb
+    
+BlockEndNewline:
+  Exclude:
+    - app/controllers/application_controller.rb
+
+AlignParameters:
+  Exclude:
+    - app/controllers/application_controller.rb
+    
+MultilineBlockLayout:
+  Exclude:
+    - app/controllers/application_controller.rb
+    
+BlockDelimiters:
+  Exclude:
+    - app/controllers/application_controller.rb
+
+IndentationConsistency:
+  Exclude:
+    - app/controllers/application_controller.rb
+
+ColonMethodCall:
+  Exclude:
+    - app/helpers/users_helper.rb
+
+ClassLength:
+  Exclude:
+    - test/integration/users_login_test.rb
+
+MethodLength:
+  Exclude:
+    - test_pg.rb
+
+Metrics/AbcSize:
+  Exclude:
+    - app/controllers/users_controller.rb
+
+Metrics/LineLength:
+  Exclude:
+    - app/helpers/application_helper.rb

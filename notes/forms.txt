@@ -1,0 +1,27 @@
+=======
+SIGN-IN
+http://localhost:3000/users/sign_in
+-------------------------------------
+app/views/users/sessions/new.html.erb
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+Parameters: email, password, remember_me
+----------------
+config/routes.rb
+  devise_for :users, controllers: { sessions: 'users/sessions',
+    passwords: 'users/passwords', registrations: 'users/registrations' }
+  resources :users
+
+=======
+SIGN-UP
+http://localhost:3000/users/sign_up
+----------------
+config/routes.rb
+  devise_for :users, controllers: { sessions: 'users/sessions',
+    passwords: 'users/passwords', registrations: 'users/registrations' }
+  resources :users
+------------------------------------------
+app/views/users/registrations/new.html.erb
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+Parameters: last_name, first_name, email, password, password_confirmation
+--------------------------------------------
+app/controllers/users/sessions_controller.rb

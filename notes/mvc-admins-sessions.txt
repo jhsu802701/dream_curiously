@@ -1,0 +1,85 @@
+ADMIN SESSIONS
+
+===========
+rake routes
+                   Prefix Verb   URI Pattern                        Controller#Action
+        new_admin_session GET    /admins/sign_in(.:format)          admins/sessions#new
+            admin_session POST   /admins/sign_in(.:format)          admins/sessions#create
+    destroy_admin_session DELETE /admins/sign_out(.:format)         admins/sessions#destroy
+  
+================
+config/routes.rb
+  devise_for :admins, controllers: { sessions: 'admins/sessions' }      
+               
+====
+VIEW
+app/views/admins/sessions/new.html.erb
+
+==========
+CONTROLLER
+app/controllers/admins/sessions_controller.rb
+  default devise response
+https://github.com/plataformatec/devise/blob/master/app/controllers/devise/sessions_controller.rb
+  # GET /resource/sign_in
+  def new
+  
+  # POST /resource/sign_in
+  def create
+
+  # DELETE /resource/sign_out
+  def destroy
+
+  protected
+
+  def sign_in_params
+  def serialize_options(resource)
+  def auth_options
+  def translation_scope
+
+  private
+
+  def verify_signed_out_user
+  def all_signed_out?
+  def respond_to_on_destroy
+  
+=======
+SIGN-IN
+
+-----------
+rake routes
+                   Prefix Verb   URI Pattern                        Controller#Action
+        new_admin_session GET    /admins/sign_in(.:format)          admins/sessions#new
+            admin_session POST   /admins/sign_in(.:format)          admins/sessions#create
+
+--------------------------------------
+app/views/admins/sessions/new.html.erb
+  Fields: email, password, remember_me
+
+---------------------------------------------
+app/controllers/admins/sessions_controller.rb
+  default devise response
+https://github.com/plataformatec/devise/blob/master/app/controllers/devise/sessions_controller.rb
+  def new
+  def create
+
+========
+SIGN-OUT
+
+-----------
+rake routes
+                   Prefix Verb   URI Pattern                        Controller#Action
+    destroy_admin_session DELETE /admins/sign_out(.:format)         admins/sessions#destroy
+            
+----------------------------------
+app/views/layouts/_header.html.erb
+  <%= link_to 'Logout', destroy_admin_session_path, :method=>'delete' %>
+
+---------------------------------------------
+app/controllers/admins/sessions_controller.rb
+  default devise response
+https://raw.githubusercontent.com/plataformatec/devise/master/app/controllers/devise/sessions_controller.rb
+  def destroy
+
+================
+INTEGRATION TEST
+test/integration/admins_login_test.rb

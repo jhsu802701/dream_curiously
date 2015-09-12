@@ -1,0 +1,38 @@
+ADMINS
+
+=====
+MODEL
+app/models/admin.rb
+test/models/admin_test.rb
+
+====
+VIEW
+app/views/admins
+  _admin.html.erb
+  index.html.erb
+  show.html.erb
+
+==========
+CONTROLLER
+app/controllers/admins_controller.rb
+  before_filter :admin_signed_in?, only: [:index, :show]
+  def show
+  def index
+  
+========
+FIXTURES
+test/fixtures/admins.yml
+
+================
+config/routes.rb
+  devise_for :admins, controllers: { sessions: 'admins/sessions',
+    passwords: 'admins/passwords', registrations: 'admins/registrations',
+    confirmations: 'admins/confirmations' }
+
+  resources :admins, only: [:show, :index]
+  
+===========
+rake routes
+                   Prefix Verb   URI Pattern                        Controller#Action
+                   admins GET    /admins(.:format)                  admins#index
+                    admin GET    /admins/:id(.:format)              admins#show

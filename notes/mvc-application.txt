@@ -1,0 +1,12 @@
+app/controllers/application_controller.rb
+  protect_from_forgery with: :exception
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+  protected
+    def configure_permitted_parameters
+
+app/helpers/application_helper.rb
+  def full_title(page_title = '')
+
+test/helpers/application_helper.rb
+
+app/views/layouts/application.html.erb

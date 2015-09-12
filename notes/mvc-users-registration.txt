@@ -1,0 +1,120 @@
+USERS - REGISTRATION
+
+====
+VIEW
+app/views/users/registrations
+  new.html.erb (http://localhost:3000/users/sign_up)
+    Parameters: last_name, first_name, email, password, password_confirmation
+  edit.html.erb
+  
+==========
+CONTROLLER
+app/controllers/users/registrations_controller.rb
+  https://github.com/plataformatec/devise/blob/master/app/controllers/devise/registrations_controller.rb
+------------------------------------------------------------------------------------------------------
+https://github.com/plataformatec/devise/blob/master/app/controllers/devise/registrations_controller.rb
+  prepend_before_filter :require_no_authentication, only: [:new, :create, :cancel]
+  prepend_before_filter :authenticate_scope!, only: [:edit, :update, :destroy]
+  
+  # GET /resource/sign_up
+  def new
+  # POST /resource
+  def create
+  # GET /resource/edit
+  def edit
+  # PUT /resource
+  # We need to use a copy of the resource because we don't want to change
+  # the current user in place.
+  def update
+  # DELETE /resource
+  def destroy
+  # GET /resource/cancel
+  # Forces the session data which is usually expired after sign
+  # in to be expired now. This is useful if the user wants to
+  # cancel oauth signing in/up in the middle of the process,
+  # removing all OAuth session data.
+  def cancel
+  
+  protected
+  def update_needs_confirmation?(resource, previous)
+  # By default we want to require a password checks on update.
+  # You can overwrite this method in your own RegistrationsController.
+  def update_resource(resource, params)
+  # Build a devise resource passing in the session. Useful to move
+  # temporary session data to the newly created user.
+  def build_resource(hash=nil)
+  # Signs in a user on sign up. You can overwrite this method in your own
+  # RegistrationsController.
+  def sign_up(resource_name, resource)
+  # The path used after sign up. You need to overwrite this method
+  # in your own RegistrationsController.
+  def after_sign_up_path_for(resource)
+  # The path used after sign up for inactive accounts. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_inactive_sign_up_path_for(resource)
+  # The default url to be used after updating a resource. You need to overwrite
+  # this method in your own RegistrationsController.
+  def after_update_path_for(resource)
+  # Authenticates the current scope and gets the current resource from the session.
+  def authenticate_scope!
+  def sign_up_params
+  def account_update_params
+  def translation_scope
+
+===
+NEW
+-----------------------------------
+http://localhost:3000/users/sign_up
+-----------
+rake routes
+  new_user_registration GET    /users/sign_up(.:format)       users/registrations#new
+------------------------------------------
+app/views/users/registrations/new.html.erb
+  Parameters: last_name, first_name, email, password, password_confirmation
+-------------------------------------------------
+app/controllers/users/registrations_controller.rb
+https://github.com/plataformatec/devise/blob/master/app/controllers/devise/registrations_controller.rb
+  # GET /resource/sign_up
+  def new
+    build_resource({})
+    set_minimum_password_length
+    yield resource if block_given?
+    respond_with self.resource
+  end
+  
+test/integration/users_signup_test.rb
+  test 'invalid signup information' do
+  test 'valid signup information' do
+
+======================
+EDIT USER REGISTRATION
+http://localhost:3000/users/edit
+rake routes
+  edit_user_registration GET    /users/edit(.:format)          users/registrations#edit
+app/views/users/registrations/edit.html.erb
+  Parameters: last_name, first_name, email, password, password_confirmation
+app/controllers/users/registrations_controller.rb
+  # GET /resource/edit
+  def edit
+test/integration/users_edit_test.rb
+  test 'signup, confirm, and edit' do
+
+========================
+DELETE USER REGISTRATION
+http://localhost:3000/users/cancel
+rake routes
+  cancel_user_registration GET    /users/cancel(.:format)        users/registrations#cancel
+app/controllers/users/registrations_controller.rb
+  # DELETE /resource
+  def destroy
+app/views/users/registrations/edit.html.erb
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+
+================
+config/routes.rb
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+================
+INTEGRATION TEST
+test/integration/admins_edit_test.rb

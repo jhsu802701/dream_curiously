@@ -1,0 +1,25 @@
+app/controllers/static_pages_controller.rb
+  def home
+  def about
+  def contact
+  
+test/controllers/static_pages_controller_test.rb
+  test 'should get home' do
+  test 'should get about' do
+  test 'should get contact' do
+
+test/helpers/application_helper.rb
+  test 'full_title function works properly' do
+
+app/views/static_pages
+  about.html.erb
+  contact.html.erb
+  home.html.erb
+  
+test/integration/site_layout_test.rb
+  test 'layout links' do
+
+config/routes.rb
+  root             'static_pages#home'
+  get 'about'   => 'static_pages#about'
+  get 'contact' => 'static_pages#contact'

@@ -1,0 +1,15 @@
+<h1>Welcome to the Sample App!</h1>
+
+<h2>
+  This is the home page for your generic Rails app.
+</h2>
+
+<% if user_signed_in? %>
+  You are logged in as a user.
+<% elsif admin_signed_in? %>
+  You are logged in as an admin.
+<% else %>
+  <div class="center jumbotron">
+    <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

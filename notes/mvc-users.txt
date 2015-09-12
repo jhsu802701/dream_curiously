@@ -1,0 +1,70 @@
+USERS
+
+=====
+MODEL
+
+app/models/user.rb
+
+test/models/user_test.rb
+  def setup
+  test 'should be valid' do
+  test 'email should be present' do
+  test 'email should not be too long' do
+  test 'email validation should accept valid addresses' do
+  test 'email validation should reject invalid addresses' do
+  test 'email address should be unique' do
+  test 'first name should be present' do
+  test 'last name should be present' do
+  test 'first name should not be too long' do
+  test 'last name should not be too long' do
+  test "password should have a minimum length" do
+
+=======
+HELPERS
+app/helpers/users_helper.rb
+  def gravatar_for(user)
+
+==========
+CONTROLLER  
+app/controllers/users_controller.rb
+  before_filter :admin_signed_in?, only: [:index, :show]
+  before_filter :admin_or_correct_user, only: [:show]
+  def show
+  def new
+  def index
+  def admin_or_correct_user
+test/controllers/users_controller_test.rb
+  test 'should not redirect index when logged in as an admin' do
+  test 'should redirect index when logged in as a user' do
+  test 'should redirect index when not logged in' do
+  test 'should allow users to see their own profile pages' do
+  test 'should not allow user to see profile of another user' do
+  test 'should redirect profile page when not logged in' do
+
+====
+VIEW
+app/views/users
+  _condition_fields.html
+  _user.html.erb
+  index.html.erb
+  show.html.erb
+app/views/users/shared
+  _links.html.erb
+test/integration/users_index_test.rb
+
+========
+FIXTURES
+test/fixtures/users.yml
+
+================
+config/routes.rb
+  devise_for :users, controllers: { sessions: 'users/sessions',
+    passwords: 'users/passwords', registrations: 'users/registrations' }
+  resources :users
+
+===========
+rake routes
+                   Prefix Verb   URI Pattern                        Controller#Action
+                    users GET    /users(.:format)                   users#index
+                 new_user GET    /users/new(.:format)               users#new
+                     user GET    /users/:id(.:format)               users#show                   
