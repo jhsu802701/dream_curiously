@@ -26,7 +26,7 @@ class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
   include Capybara::Email::DSL
-  Capybara.default_wait_time = 5
+  Capybara.default_max_wait_time = 10
 end
 
 def create_user (str_l_name, str_f_name, str_email, str_pwd)
@@ -105,6 +105,7 @@ end
 def login_admin (str_email, str_pwd, status_remember)
   begin
     logout(:admin)
+    sleep (0.5)
   rescue
     print
   end
@@ -142,6 +143,12 @@ end
 
 # Uses test admins and users from test/fixtures/*.yml
 def setup_admins_users
+  begin
+    click_on('Logout')
+  rescue
+    print
+  end
+
   Warden.test_reset!
 
   @a1 = admins(:elle_woods)
