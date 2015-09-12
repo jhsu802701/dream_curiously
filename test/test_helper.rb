@@ -30,6 +30,11 @@ class ActionDispatch::IntegrationTest
 end
 
 def create_user (str_l_name, str_f_name, str_email, str_pwd)
+  begin
+    click_on('Logout')
+  rescue
+    print
+  end
   # Sign up
   clear_emails # Clear the message queue
   visit new_user_registration_path
@@ -57,7 +62,7 @@ end
 # Prerequisite: create_user
 def login_user (str_email, str_pwd, status_remember)
   begin
-    logout(:user)
+    click_on('Logout')
   rescue
     print
   end
@@ -104,8 +109,7 @@ end
 # Prerequisite: create_admin
 def login_admin (str_email, str_pwd, status_remember)
   begin
-    logout(:admin)
-    sleep (0.5)
+    click_on('Logout')
   rescue
     print
   end
