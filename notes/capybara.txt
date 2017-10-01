@@ -1,3 +1,3 @@
 Cheat sheet:
-http://ricostacruz.com/cheatsheets/capybara.html
+https://devhints.io/capybara
 https://gist.github.com/zhengjia/428105
